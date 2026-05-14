@@ -15,3 +15,11 @@
   background: none !important;
   border: none !important;
 }
+
+/* Leaflet z-index 낮춰서 UI 버튼이 위에 오도록 */
+.leaflet-container {
+  z-index: 0 !important;
+}
+.leaflet-pane, .leaflet-control-container {
+  z-index: 1 !important;
+}
