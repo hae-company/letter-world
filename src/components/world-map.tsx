@@ -30,6 +30,9 @@ export function WorldMap({ letters, onLetterClick, flyTo }: Props) {
     const map = L.map(mapContainer.current, {
       center: [20, 0], zoom: 3, minZoom: 2, maxZoom: 10,
       zoomControl: false, attributionControl: false,
+      worldCopyJump: true,
+      maxBounds: [[-90, -Infinity], [90, Infinity]],
+      maxBoundsViscosity: 0,
     });
     L.tileLayer(TILE_URL, { maxZoom: 18 }).addTo(map);
     
