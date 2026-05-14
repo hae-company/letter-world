@@ -10,8 +10,8 @@ interface Props {
   flyTo?: { lat: number; lng: number } | null;
 }
 
-const TILE_URL = "https://tiles.stadiamaps.com/tiles/stamen_watercolor/{z}/{x}/{y}.jpg";
-const LABEL_URL = "https://tiles.stadiamaps.com/tiles/stamen_terrain_labels/{z}/{x}/{y}.png";
+const TILE_URL = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
+const LABEL_URL = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
 
 const envelopeIcon = (hearts: number) => L.divIcon({
   html: `<div style="font-size:26px;cursor:pointer;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));text-align:center;position:relative;">&#x2709;${hearts > 0 ? '<span style="font-size:10px;position:absolute;top:-6px;right:-8px;background:#e85d75;color:white;border-radius:50%;width:16px;height:16px;display:flex;align-items:center;justify-content:center;">' + hearts + '</span>' : ''}</div>`,
@@ -32,7 +32,7 @@ export function WorldMap({ letters, onLetterClick, flyTo }: Props) {
       zoomControl: false, attributionControl: false,
     });
     L.tileLayer(TILE_URL, { maxZoom: 18 }).addTo(map);
-    L.tileLayer(LABEL_URL, { maxZoom: 18, opacity: 0.4 }).addTo(map);
+    
     L.control.zoom({ position: "bottomright" }).addTo(map);
     mapRef.current = map;
     return () => { map.remove(); mapRef.current = null; };

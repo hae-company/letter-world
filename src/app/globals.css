@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-.mapboxgl-canvas { outline: none; }
-.mapboxgl-ctrl-logo, .mapboxgl-ctrl-attrib { display: none !important; }
+
+/* Vintage parchment look via CSS filter on map tiles */
+.leaflet-tile-pane {
+  filter: sepia(0.35) saturate(0.7) brightness(1.05) contrast(0.9);
+}
+
+.leaflet-container {
+  background: #f5ead6;
+}
+
+.letter-marker {
+  background: none !important;
+  border: none !important;
+}
