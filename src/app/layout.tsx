@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Caveat, Nanum_Pen_Script } from "next/font/google";
 import "./globals.css";
-import "mapbox-gl/dist/mapbox-gl.css";
+import "leaflet/dist/leaflet.css";
 
 const caveat = Caveat({ variable: "--font-caveat", subsets: ["latin"] });
 const nanumPen = Nanum_Pen_Script({ variable: "--font-nanum-pen", weight: "400", subsets: ["latin"] });

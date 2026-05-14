@@ -13,7 +13,7 @@ const WorldMap = dynamic(() => import("@/components/world-map").then(m => ({ def
   loading: () => <div className="w-full h-full bg-[#f5ead6] flex items-center justify-center text-[#b0986a] font-[family-name:var(--font-caveat)] text-2xl">지도를 불러오는 중...</div>,
 });
 
-const MAPBOX_TOKEN = process.env.NEXT_PUBLIC_MAPBOX_TOKEN || "";
+
 
 export default function Home() {
   const [letters, setLetters] = useState<Letter[]>([]);
@@ -67,7 +67,7 @@ export default function Home() {
       <WorldMap
         letters={letters}
         onLetterClick={setReadLetter}
-        accessToken={MAPBOX_TOKEN}
+        
         flyTo={flyTo}
       />
 
