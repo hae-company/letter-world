@@ -75,7 +75,6 @@ export default function Home() {
     <div className="h-full relative">
       <LoadingScreen />
 
-      {/* Map */}
       <WorldMap
         letters={letters}
         onLetterClick={handleLetterClick}
@@ -83,34 +82,34 @@ export default function Home() {
         onFlyDone={clearFlyTo}
       />
 
-      {/* Header */}
+      {/* Header — 감성 타이틀 */}
       <div className="absolute top-0 left-0 right-0 z-30 p-3 sm:p-4 flex items-center justify-between pointer-events-none">
-        <div className="pointer-events-auto px-4 py-2 bg-white/70 backdrop-blur-xl rounded-2xl shadow-md border border-white/50">
-          <h1 className="text-lg sm:text-xl font-[family-name:var(--font-caveat)] text-[#4a3a15]">
-            ✉️ {t(locale, "title")}
+        <div className="pointer-events-auto px-5 py-2.5 bg-white/75 backdrop-blur-xl rounded-full shadow-md border border-[#e0d0b0]/60">
+          <h1 className="text-lg sm:text-xl font-[family-name:var(--font-caveat)] text-[#6a5420] flex items-center gap-1.5">
+            <span className="animate-sway inline-block">&#x1F48C;</span>
+            {t(locale, "title")}
           </h1>
         </div>
 
         <div className="flex items-center gap-2 pointer-events-auto">
-          {/* Language */}
           <div className="relative">
             <button
               onClick={() => setLangOpen(!langOpen)}
-              className="w-9 h-9 bg-white/70 backdrop-blur-xl rounded-xl shadow-md border border-white/50 flex items-center justify-center text-sm hover:bg-white/90 transition-colors"
+              className="w-10 h-10 bg-white/75 backdrop-blur-xl rounded-full shadow-md border border-[#e0d0b0]/60 flex items-center justify-center text-base hover:bg-white/90 transition-colors"
             >
               {LOCALES.find(l => l.id === locale)?.flag}
             </button>
             {langOpen && (
               <>
                 <div className="fixed inset-0 z-40" onClick={() => setLangOpen(false)} />
-                <div className="absolute right-0 top-full mt-1.5 bg-white/95 backdrop-blur-xl rounded-xl shadow-xl border border-white/60 overflow-hidden z-50">
+                <div className="absolute right-0 top-full mt-2 bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl border border-[#e0d0b0]/50 overflow-hidden z-50 min-w-[140px]">
                   {LOCALES.map(l => (
                     <button
                       key={l.id}
                       onClick={() => { setLocale(l.id); setLangOpen(false); }}
-                      className={`w-full px-4 py-2.5 text-left text-sm flex items-center gap-2.5 hover:bg-[#f0e4c8] transition-colors ${locale === l.id ? "bg-[#f0e4c8]" : ""}`}
+                      className={`w-full px-4 py-3 text-left text-sm flex items-center gap-2.5 hover:bg-[#f5ead6] transition-colors ${locale === l.id ? "bg-[#f5ead6]" : ""}`}
                     >
-                      <span className="text-base">{l.flag}</span>
+                      <span className="text-lg">{l.flag}</span>
                       <span className="text-[#4a3a15]">{l.label}</span>
                     </button>
                   ))}
@@ -119,45 +118,43 @@ export default function Home() {
             )}
           </div>
 
-          {/* Count */}
-          <div className="px-3 py-2 bg-white/70 backdrop-blur-xl rounded-xl shadow-md border border-white/50 text-[#8b6914] font-[family-name:var(--font-caveat)] text-base">
-            {letters.length} {t(locale, "letterCount")}
+          <div className="px-4 py-2.5 bg-white/75 backdrop-blur-xl rounded-full shadow-md border border-[#e0d0b0]/60 text-[#8b6914] font-[family-name:var(--font-caveat)] text-base">
+            &#x2709;&#xFE0F; {letters.length} {t(locale, "letterCount")}
           </div>
         </div>
       </div>
 
-      {/* Empty state hint */}
+      {/* 빈 상태 */}
       {loaded && letters.length === 0 && !writeOpen && (
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 text-center animate-fade-in-up pointer-events-none">
-          <div className="text-5xl mb-4 animate-float">✉️</div>
-          <p className="text-[#8b6914] font-[family-name:var(--font-caveat)] text-2xl mb-1">
+          <div className="text-6xl mb-5 animate-float">&#x1F48C;</div>
+          <p className="text-[#6a5420] font-[family-name:var(--font-caveat)] text-3xl mb-2">
             아직 편지가 없어요
           </p>
-          <p className="text-[#b09868] font-[family-name:var(--font-caveat)] text-lg">
+          <p className="text-[#b09868] font-[family-name:var(--font-caveat)] text-xl">
             첫 번째 편지를 세계에 보내보세요
           </p>
         </div>
       )}
 
-      {/* Bottom buttons */}
-      <div className="absolute bottom-5 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2.5 sm:gap-3">
+      {/* 하단 버튼 */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 flex items-center gap-3">
         {letters.length > 0 && (
           <button
             onClick={openRandomLetter}
-            className="px-4 sm:px-5 py-2.5 sm:py-3 bg-white/75 backdrop-blur-xl rounded-2xl shadow-md border border-white/50 text-[#8b6914] font-[family-name:var(--font-caveat)] text-base sm:text-lg hover:bg-white/90 hover:scale-105 active:scale-95 transition-all"
+            className="group px-5 py-3 bg-white/80 backdrop-blur-xl rounded-full shadow-lg border border-[#e0d0b0]/60 text-[#8b6914] font-[family-name:var(--font-caveat)] text-lg hover:bg-white/95 hover:scale-105 active:scale-95 transition-all"
           >
-            🎲 {t(locale, "randomLetter")}
+            <span className="inline-block group-hover:animate-spin transition-transform">&#x1F3B2;</span> {t(locale, "randomLetter")}
           </button>
         )}
         <button
           onClick={() => setWriteOpen(true)}
-          className="px-5 sm:px-6 py-2.5 sm:py-3 bg-[#8b6914] text-white rounded-2xl shadow-lg font-[family-name:var(--font-caveat)] text-base sm:text-lg hover:bg-[#9a7818] hover:scale-105 active:scale-95 transition-all"
+          className="px-6 py-3 bg-gradient-to-r from-[#8b6914] to-[#a07818] text-white rounded-full shadow-lg font-[family-name:var(--font-caveat)] text-lg hover:from-[#9a7818] hover:to-[#b08820] hover:scale-105 active:scale-95 transition-all hover:shadow-xl"
         >
-          ✏️ {t(locale, "writeLetter")}
+          &#x270F;&#xFE0F; {t(locale, "writeLetter")}
         </button>
       </div>
 
-      {/* Modals */}
       <WriteModal open={writeOpen} onClose={() => setWriteOpen(false)} onSend={handleSend} sending={sending} locale={locale} />
       <ReadModal letter={readLetter} onClose={() => setReadLetter(null)} locale={locale} />
       <PaperPlane visible={planeVisible} locationName={sentLocation?.name || ""} onComplete={handlePlaneComplete} locale={locale} />
