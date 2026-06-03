@@ -2,24 +2,23 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* Vintage parchment look via CSS filter on map tiles */
 .leaflet-tile-pane {
-  filter: sepia(0.35) saturate(0.7) brightness(1.05) contrast(0.9);
+  filter: sepia(0.3) saturate(0.65) brightness(1.08) contrast(0.88);
 }
+.leaflet-container { background: #f5ead6; }
+.letter-marker { background: none !important; border: none !important; }
+.leaflet-container { z-index: 0 !important; }
+.leaflet-pane { z-index: 1 !important; }
+.leaflet-control-container { z-index: 2 !important; }
 
-.leaflet-container {
-  background: #f5ead6;
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }
+.animate-float { animation: float 3s ease-in-out infinite; }
 
-.letter-marker {
-  background: none !important;
-  border: none !important;
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-
-/* Leaflet z-index 낮춰서 UI 버튼이 위에 오도록 */
-.leaflet-container {
-  z-index: 0 !important;
-}
-.leaflet-pane, .leaflet-control-container {
-  z-index: 1 !important;
-}
+.animate-fade-in-up { animation: fadeInUp 0.6s ease-out; }
