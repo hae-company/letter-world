@@ -171,16 +171,29 @@ export function ReadModal({ letter, onClose, locale }: Props) {
               </motion.div>
             </div>
 
-            {/* Close */}
-            <motion.button
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8 }}
-              onClick={onClose}
-              className="block mx-auto mt-4 text-white/50 text-xs hover:text-white/80 transition-colors"
-            >
-              {t(locale, "tapToClose")}
-            </motion.button>
+            {/* Close + Share */}
+            <div className="flex items-center justify-center gap-4 mt-4">
+              <button
+                onClick={onClose}
+                className="px-6 py-2.5 bg-white/20 backdrop-blur-sm rounded-full text-white/70 text-sm hover:bg-white/30 hover:text-white transition-all"
+              >
+                {t(locale, "tapToClose")}
+              </button>
+              <button
+                onClick={() => {
+                  const url = typeof window !== "undefined" ? window.location.origin + "?letter=" + letter.id : "";
+                  if (typeof navigator !== "undefined" && navigator.share) {
+                    navigator.share({ title: "Letter to the World", text: letter.body.slice(0, 80) + "...", url });
+                  } else if (typeof navigator !== "undefined") {
+                    navigator.clipboard.writeText(url);
+                    alert("링크가 복사되었어요!");
+                  }
+                }}
+                className="px-6 py-2.5 bg-white/20 backdrop-blur-sm rounded-full text-white/70 text-sm hover:bg-white/30 hover:text-white transition-all flex items-center gap-1.5"
+              >
+                <span>&#x1F517;</span> 공유하기
+              </button>
+            </div>
           </motion.div>
         </motion.div>
       )}
