@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Caveat, Nanum_Pen_Script } from "next/font/google";
 import "./globals.css";
 import "leaflet/dist/leaflet.css";
+import "leaflet.markercluster/dist/MarkerCluster.css";
+import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 
 const caveat = Caveat({ variable: "--font-caveat", subsets: ["latin"] });
 const nanumPen = Nanum_Pen_Script({ variable: "--font-nanum-pen", weight: "400", subsets: ["latin"] });
