@@ -142,14 +142,14 @@ export default function Home() {
         {letters.length > 0 && (
           <button
             onClick={openRandomLetter}
-            className="group px-7 py-4 bg-white/80 backdrop-blur-xl rounded-full shadow-lg border border-[#e0d0b0]/60 text-[#8b6914] font-[family-name:var(--font-caveat)] text-xl hover:bg-white/95 hover:scale-105 active:scale-95 transition-all"
+            className="group px-8 py-4 bg-white/80 backdrop-blur-xl rounded-full shadow-lg border border-[#e0d0b0]/60 text-[#8b6914] font-[family-name:var(--font-caveat)] text-base hover:bg-white/95 hover:scale-105 active:scale-95 transition-all"
           >
             <span className="inline-block group-hover:animate-spin transition-transform">&#x1F3B2;</span> {t(locale, "randomLetter")}
           </button>
         )}
         <button
           onClick={() => setWriteOpen(true)}
-          className="px-8 py-4 bg-gradient-to-r from-[#8b6914] to-[#a07818] text-white rounded-full shadow-lg font-[family-name:var(--font-caveat)] text-xl hover:from-[#9a7818] hover:to-[#b08820] hover:scale-105 active:scale-95 transition-all hover:shadow-xl"
+          className="px-10 py-4 bg-gradient-to-r from-[#8b6914] to-[#a07818] text-white rounded-full shadow-lg font-[family-name:var(--font-caveat)] text-base hover:from-[#9a7818] hover:to-[#b08820] hover:scale-105 active:scale-95 transition-all hover:shadow-xl"
         >
           &#x270F;&#xFE0F; {t(locale, "writeLetter")}
         </button>
