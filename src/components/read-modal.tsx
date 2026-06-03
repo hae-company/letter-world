@@ -64,7 +64,7 @@ export function ReadModal({ letter, onClose, locale }: Props) {
             exit={{ scale: 0.8, opacity: 0, y: 50 }}
             transition={{ type: "spring", damping: 24, stiffness: 280 }}
             onClick={e => e.stopPropagation()}
-            className="w-full max-w-md"
+            className="w-full max-w-md max-h-[90vh] overflow-y-auto"
           >
             {/* Wax seal */}
             <div className="flex justify-center -mb-5 relative z-10">
@@ -80,7 +80,7 @@ export function ReadModal({ letter, onClose, locale }: Props) {
 
             {/* Letter */}
             <div
-              className="bg-[#fdf6e3] rounded-xl shadow-2xl px-7 pt-8 pb-6 relative"
+              className="bg-[#fdf6e3] rounded-xl shadow-2xl px-5 sm:px-7 pt-6 sm:pt-8 pb-5 sm:pb-6 relative"
               style={{
                 backgroundImage: "repeating-linear-gradient(transparent, transparent 30px, rgba(190,170,130,0.2) 31px)",
                 boxShadow: "0 16px 48px rgba(80,60,10,0.2), 0 0 0 1px rgba(180,160,120,0.15)",

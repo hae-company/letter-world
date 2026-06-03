@@ -53,10 +53,10 @@ export function WriteModal({ open, onClose, onSend, sending, locale }: Props) {
             exit={{ scale: 0.85, opacity: 0, y: 30 }}
             transition={{ type: "spring", damping: 28, stiffness: 350 }}
             onClick={e => e.stopPropagation()}
-            className="w-full max-w-md"
+            className="w-full max-w-md max-h-[90vh] overflow-y-auto"
           >
             <div
-              className="bg-[#fdf6e3] rounded-xl shadow-2xl p-7 relative"
+              className="bg-[#fdf6e3] rounded-xl shadow-2xl p-5 sm:p-7 relative"
               style={{
                 backgroundImage: "repeating-linear-gradient(transparent, transparent 30px, rgba(190,170,130,0.2) 31px)",
                 boxShadow: "0 16px 48px rgba(80,60,10,0.2), 0 0 0 1px rgba(180,160,120,0.2)",
@@ -81,7 +81,7 @@ export function WriteModal({ open, onClose, onSend, sending, locale }: Props) {
                 value={body}
                 onChange={e => setBody(e.target.value.slice(0, 500))}
                 placeholder={t(locale, "bodyPlaceholder")}
-                className="w-full h-44 bg-transparent text-[#3a2e10] font-[family-name:var(--font-nanum-pen)] text-[22px] leading-[31px] resize-none focus:outline-none placeholder:text-[#c8b48a]/70"
+                className="w-full h-32 sm:h-44 bg-transparent text-[#3a2e10] font-[family-name:var(--font-nanum-pen)] text-[22px] leading-[31px] resize-none focus:outline-none placeholder:text-[#c8b48a]/70"
               />
 
               {/* From + date */}
