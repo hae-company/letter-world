@@ -181,12 +181,11 @@ export function ReadModal({ letter, onClose, locale }: Props) {
               </button>
               <button
                 onClick={() => {
-                  const url = typeof window !== "undefined" ? window.location.origin + "?letter=" + letter.id : "";
+                  const url = typeof window !== "undefined" ? window.location.origin + "?letter=" + encodeURIComponent(letter.id) : "";
                   if (typeof navigator !== "undefined" && navigator.share) {
-                    navigator.share({ title: "Letter to the World", text: letter.body.slice(0, 80) + "...", url });
+                    navigator.share({ title: "Letter to the World", url }).catch(() => {});
                   } else if (typeof navigator !== "undefined") {
-                    navigator.clipboard.writeText(url);
-                    alert("링크가 복사되었어요!");
+                    navigator.clipboard.writeText(url).then(() => alert("링크가 복사되었어요!"));
                   }
                 }}
                 className="px-6 py-2.5 bg-white/20 backdrop-blur-sm rounded-full text-white/70 text-sm hover:bg-white/30 hover:text-white transition-all flex items-center gap-1.5"
